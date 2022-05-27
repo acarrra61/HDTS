@@ -1,0 +1,35 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+{% block mainBody %}
+<section class="hero">
+	<div class="background-image" style="background-image: url({% static 'assets/img/island.jpg' %});"></div>
+	<!--Alex-->
+	<h1>Requests</h1>
+	{% for message in messages %}
+    {{ message }}
+    {% endfor %}
+	<br>
+	<form method="POST">
+		{% csrf_token %}
+		<h4>Create an event</h4>
+		<table class="rwd-table">
+			{{ event_form }}
+		</table>
+		<br>
+		<input class="submit-button" type="submit" value="Add Event">
+	</form>
+	<br><br>
+	<form method="POST">
+		{% csrf_token %}
+		<h4>Create a request</h4>
+		<table class="rwd-table">
+			{{ request_form }}
+		</table>
+		<br>
+		<input class="submit-button" type="submit" value="Create Request">
+	</form>
+	<br><br>
+	Note: Please create an event before proceeding to making a request
+</section>
+{% endblock %}
